@@ -22,16 +22,30 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-f=e&w4c#ypikh!s0n@f(g=jw^)9yzg8n%)7iaa_e8t3u^=+86k'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+IS_VERCEL = os.environ.get("VERCEL") == "1"
+DEBUG = os.environ.get("DJANGO_DEBUG", "false" if IS_VERCEL else "true").lower() == "true"
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+if not SECRET_KEY:
+    if IS_VERCEL or not DEBUG:
+        from django.core.exceptions import ImproperlyConfigured
+        raise ImproperlyConfigured("Set DJANGO_SECRET_KEY in the deployment environment.")
+    SECRET_KEY = "django-insecure-local-development-only"
 
 ALLOWED_HOSTS = [
-    "aadityapfp.dev",
-    "www.aadityapfp.dev",
-    "aaditya-portfolio-lwrj.onrender.com",
+    "aadityapfp.dev", "www.aadityapfp.dev",
+    "aaditya-portfolio-lwrj.onrender.com", "127.0.0.1", "localhost",
 ]
+for variable in ("VERCEL_URL", "VERCEL_PROJECT_PRODUCTION_URL", "VERCEL_BRANCH_URL"):
+    hostname = os.environ.get(variable)
+    if hostname:
+        ALLOWED_HOSTS.append(hostname)
+ALLOWED_HOSTS += [host.strip() for host in os.environ.get("DJANGO_ALLOWED_HOSTS", "").split(",") if host.strip()]
+CSRF_TRUSTED_ORIGINS = ["https://aadityapfp.dev", "https://www.aadityapfp.dev"]
+CSRF_TRUSTED_ORIGINS += [origin.strip() for origin in os.environ.get("DJANGO_CSRF_TRUSTED_ORIGINS", "").split(",") if origin.strip()]
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
+if IS_VERCEL:
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 
 # Application definition
@@ -49,7 +63,6 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",  # Optional for static files
-    "django.contrib.sessions.middleware.SessionMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -124,7 +137,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [ BASE_DIR / "static" ]
 
 # Default primary key field type
@@ -139,4 +153,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER or "webmaster@localhost"
+EMAIL_TIMEOUT = 15

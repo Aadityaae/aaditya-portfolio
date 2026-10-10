@@ -1,0 +1,21 @@
+/* The toolkit shares the About section's full-width editorial grid. */
+.about .skills-about-intro{gap:60px;align-items:start}
+.skills-about-intro .large-copy{max-width:420px}
+.skills-about-intro .about-story>p:not(.large-copy){max-width:none}
+.skills-panel{margin-top:65px;scroll-margin-top:110px}
+.skills-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:32px}
+.skills-heading .eyebrow{color:var(--acid);font-size:9px;margin-bottom:15px}
+.skills-heading h2{font-size:clamp(30px,3.1vw,44px);font-weight:500;letter-spacing:-.045em}
+.skills-heading h2 .serif{color:var(--acid)}
+.about .skills-heading>p{font-size:12px;color:#c3ccbc;line-height:1.7}
+.skills-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px 36px}
+.skill-group{min-width:0;padding-top:22px;border-top:1px solid #8b9c8366}
+.skill-group-heading{display:flex;align-items:baseline;gap:12px;margin-bottom:18px}
+.skill-group-heading .mono{color:var(--acid);font-size:9px;flex:0 0 20px;letter-spacing:0}
+.skill-group-heading h3{font-size:19px;font-weight:500;line-height:1.3;letter-spacing:-.025em}
+.skill-list{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.skill-list li{font-size:11px;line-height:1.4;color:var(--on-dark);border:1px solid #8b9c8366;border-radius:4px;padding:7px 10px;background:#ffffff03}
+@media(max-width:1000px){.skills-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}.about .skills-about-intro{gap:35px}}
+@media(max-width:760px){.about .skills-about-intro{grid-template-columns:1fr;gap:0}.skills-panel{margin-top:45px}.skills-heading{align-items:flex-start;flex-direction:column;gap:15px;margin-bottom:25px}.skills-heading h2{font-size:32px}.skills-heading>p br{display:none}.skills-grid{gap:25px 20px}.skill-group-heading{gap:8px;align-items:flex-start}.skill-group-heading h3{font-size:17px}.skill-list{gap:6px}.skill-list li{font-size:10px;padding:6px 8px}}
+@media(max-width:480px){.skills-grid{grid-template-columns:1fr}.skill-group-heading{align-items:baseline}.skill-group-heading h3{font-size:20px}.skill-list li{font-size:11px}.skill-group{padding-top:18px}}
+@media(prefers-contrast:more){.skill-group,.skill-list li{border-color:#bacaa9}.about .skills-heading>p{color:var(--on-dark)}}
