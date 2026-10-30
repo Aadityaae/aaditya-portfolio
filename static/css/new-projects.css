@@ -1,0 +1,18 @@
+.orbis-art{background:#142e39;color:#dcebdd;overflow:hidden}
+.orbis-globe{position:absolute;width:180px;height:180px;right:18px;top:35px;transform:rotate(-18deg)}
+.orbis-globe svg{width:100%;height:100%;stroke:#91baaa;stroke-width:.8;opacity:.65}
+.orbis-globe .orbis-location{fill:#dfef96;stroke:#dfef96;stroke-width:2}
+.orbis-query{position:absolute;bottom:30px;right:5px;white-space:nowrap;background:#dcebdd;color:#18313a;padding:7px 10px;border-radius:3px;font-size:8px;transform:rotate(18deg)}
+.orbis-art>strong,.futzzy-art>strong{position:absolute;left:24px;bottom:48px;font-size:40px;letter-spacing:-.065em;line-height:1;z-index:1}
+.orbis-art>strong>span,.futzzy-art>strong>span{display:block;font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em;font-size:17px;margin-top:10px}
+.orbis-art .art-label,.orbis-art .art-bottom{color:#c8dbd4}
+.futzzy-art{background:#dce894;color:#1e342b;overflow:hidden;background-image:linear-gradient(115deg,transparent 47%,#ffffff25 47%,#ffffff25 48%,transparent 48%)}
+.futzzy-scoreboard{position:absolute;width:180px;right:20px;top:43px;background:#213a30;color:#edf2cf;border:1px solid #3f5740;transform:rotate(-5deg);box-shadow:6px 8px 0 #18352715}
+.futzzy-board-top{display:flex;justify-content:space-between;gap:10px;font-size:7px;padding:12px 14px;border-bottom:1px solid #dce89430}
+.futzzy-board-top>span:last-child{color:#e1ee98}
+.futzzy-match{display:flex;justify-content:space-between;align-items:center;padding:13px 18px;gap:10px}
+.futzzy-match>span{font-family:var(--mono);font-size:8px}.futzzy-match b{font-family:var(--display);font-size:28px;line-height:1.3;font-weight:500;letter-spacing:-.05em}.futzzy-match i{font-style:normal;color:#b8cc85}
+.futzzy-board-bottom{font-size:7px;border-top:1px solid #dce89430;padding:10px 14px;text-align:center}.futzzy-board-bottom span{color:#a5b979}
+.futzzy-art .art-label,.futzzy-art .art-bottom{color:#2d4534}
+@media(max-width:1100px){.orbis-globe{width:205px;height:205px;right:8px;top:30px}.orbis-art>strong,.futzzy-art>strong{font-size:44px;left:25px;bottom:52px}.futzzy-scoreboard{width:180px;right:18px;top:42px}.futzzy-match b{font-size:28px}}
+@media(max-width:760px){.orbis-globe{width:200px;height:200px;right:12px;top:25px}.futzzy-scoreboard{width:180px;top:42px}.orbis-art>strong,.futzzy-art>strong{font-size:40px;left:25px;bottom:40px}.orbis-art>strong>span,.futzzy-art>strong>span{font-size:15px}.orbis-art .art-bottom,.futzzy-art .art-bottom{font-size:7px}}
