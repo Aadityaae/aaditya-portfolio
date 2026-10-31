@@ -1,4 +1,18 @@
 .orbis-art{background:#142e39;color:#dcebdd;overflow:hidden}
+.askdb-art{background:#ecd9c5;color:#48352c;overflow:hidden}
+.askdb-art .art-label,.askdb-art .art-bottom{color:#654638}
+.askdb-art>strong{position:absolute;left:24px;bottom:48px;font-size:40px;letter-spacing:-.065em;line-height:1;z-index:1}
+.askdb-art>strong>span{display:block;font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em;font-size:16px;margin-top:9px}
+.askdb-preview{position:absolute;width:190px;right:20px;top:44px;transform:rotate(-4deg)}
+.askdb-question{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 10px;background:#754a38;color:#fff6e9;border-radius:4px;font-size:8px;box-shadow:3px 4px 0 #48352c12}
+.askdb-question>span{font-size:13px}
+.askdb-result{margin:8px 0 0 12px;padding:10px;background:#faf3e9;border:1px solid #b99b8366;border-radius:4px}
+.askdb-query{font-size:6px;letter-spacing:0;color:#75513e}
+.askdb-chart{height:43px;display:flex;align-items:flex-end;gap:8px;padding:7px 4px 0;border-bottom:1px solid #b99b8366}
+.askdb-chart i{flex:1;background:#a06b4d;border-radius:2px 2px 0 0;height:65%}.askdb-chart i:nth-child(2){height:100%}.askdb-chart i:nth-child(3){height:48%}.askdb-chart i:nth-child(4){height:80%;background:#536c51}.askdb-chart i:nth-child(5){height:33%}
+.askdb-safe{display:block;font-size:5px;letter-spacing:.02em;color:#536449;margin-top:7px}
+@media(max-width:1100px){.askdb-art>strong{left:25px;bottom:45px}.askdb-preview{width:180px;right:18px;top:43px}}
+@media(max-width:760px){.askdb-art>strong{bottom:40px}.askdb-art>strong>span{font-size:15px}.askdb-art .art-bottom{font-size:7px}}
 .orbis-globe{position:absolute;width:180px;height:180px;right:18px;top:35px;transform:rotate(-18deg)}
 .orbis-globe svg{width:100%;height:100%;stroke:#91baaa;stroke-width:.8;opacity:.65}
 .orbis-globe .orbis-location{fill:#dfef96;stroke:#dfef96;stroke-width:2}
